@@ -1,0 +1,18 @@
+version: "3.0"
+
+services:
+  app:
+    build: "./"
+    command: ["npm", "start"]
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "-k", "https://localhost:3000"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./.ssl:/home/node/app/.ssl:cached
+      - ./:/home/node/app:delegated

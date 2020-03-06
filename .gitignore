@@ -1,0 +1,6 @@
+.config/
+.npm/
+
+.ash_history
+
+node_modules/
